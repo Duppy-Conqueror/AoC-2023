@@ -47,7 +47,7 @@ public class Day01 {
                                 }
                                 int sliceStart = Collections.min(indices.stream().filter(i -> i > -1).toList());
                                 int smallest = indices.indexOf(sliceStart);
-                                digits += keywords.get(smallest % keywords.size() / 2);
+                                digits += keywords.get(smallest % (keywords.size() / 2));
                                 temp = temp.substring(sliceStart + 1);
                             }
                             return digits;
