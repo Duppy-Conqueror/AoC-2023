@@ -10,38 +10,12 @@ public class Day08 {
         return pathMap;
     }
 
-    public static long leastCommonMultiple(List<Integer> list) {
-        long ret = 1;
-        int divisor = 2;
-
-        while (true) {
-            int counter = 0;
-            boolean divisible = false;
-
-            for (int i = 0; i < list.size(); i++) {
-                if (list.get(i) == 0) {
-                    return 0;
-                } else if (list.get(i) < 0) {
-                    list.set(i, list.get(i) * -1);
-                }
-                if (list.get(i) == 1) {
-                    counter++;
-                }
-                if (list.get(i) % divisor == 0) {
-                    divisible = true;
-                    list.set(i, list.get(i) / divisor);
-                }
-            }
-            if (divisible) {
-                ret = ret * divisor;
-            } else {
-                divisor++;
-            }
-
-            if (counter == list.size()) {
-                return ret;
-            }
-        }
+    public static int greatestCommonDivisor(int a, int b) {
+        if (b == 0) {return a;}
+        return greatestCommonDivisor(b, a % b);
+    }
+    public static long leastCommonMultiple(List<Integer> integers) {
+        return integers.stream().reduce(1, (x, y) -> (x * y) / greatestCommonDivisor(x, y));
     }
 
     public static int partOne(List<String> lines) {
