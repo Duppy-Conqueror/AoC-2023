@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.util.*;
 
+// BOO
+
 enum Direction {
     UP, DOWN, LEFT, RIGHT
 }
